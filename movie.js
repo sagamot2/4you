@@ -1,4 +1,3 @@
-
 const root = document.documentElement;
 const modeToggle = document.getElementById('modeToggle');
 
@@ -113,16 +112,43 @@ if (removeImgBtn) {
 const sendBtn = document.getElementById('send-discord-btn');
 
 if (sendBtn) {
-  sendBtn.addEventListener('click', () => {
+  sendBtn.addEventListener('click', async () => {
+    const originalLabel = sendBtn.textContent;
     sendBtn.disabled = true;
     sendBtn.textContent = 'กำลังส่ง...';
 
-    setTimeout(() => {
+    const msgInput = document.getElementById('discord-msg');
+    const message = msgInput ? msgInput.value.trim() : '';
+    const file = fileInput && fileInput.files[0];
+    const planNote = confirmNote ? confirmNote.textContent.trim() : '';
+
+    try {
+      const contentLines = ['🍿 **แผนดูหนัง**'];
+      if (planNote) contentLines.push(planNote);
+      if (message) contentLines.push(`ข้อความ: ${message}`);
+
+      const formData = new FormData();
+      formData.append('payload_json', JSON.stringify({ content: contentLines.join('\n') }));
+      if (file) {
+        formData.append('files[0]', file, file.name);
+      }
+
+      const res = await fetch('/.netlify/functions/notify', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!res.ok) throw new Error('send failed: ' + res.status);
+
       alert('ส่งให้กัสแล้ว เดี๋ยวรีบตอบนะ 💙');
-      sendBtn.disabled = false;
-      sendBtn.textContent = 'ส่งให้กัส 💙';
-      document.getElementById('discord-msg').value = '';
+      if (msgInput) msgInput.value = '';
       if (removeImgBtn) removeImgBtn.click();
-    }, 700);
+    } catch (err) {
+      console.error(err);
+      alert('ส่งไม่สำเร็จ เช็กเน็ตแล้วลองใหม่อีกทีนะ 🥲');
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = originalLabel;
+    }
   });
 }
