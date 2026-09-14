@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="HBD.css">
+</head>
+<body>
+
+  <div id="start-overlay">
+    <div class="candle-wrap" id="candleWrap">
+      <svg class="candle-svg" viewBox="0 0 60 140" width="70" height="164">
+        <defs>
+          <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#e3796f"/>
+            <stop offset="55%" stop-color="#f3c477"/>
+            <stop offset="100%" stop-color="#fff4d6"/>
+          </linearGradient>
+        </defs>
+        <ellipse class="flame-glow" cx="30" cy="24" rx="26" ry="30"/>
+        <path class="flame" d="M30 6 C 20 22, 20 34, 30 44 C 40 34, 40 22, 30 6 Z"/>
+        <rect class="wick" x="28" y="40" width="4" height="10" rx="2"/>
+        <ellipse class="candle-top" cx="30" cy="48" rx="16" ry="5"/>
+        <rect class="candle-body" x="14" y="48" width="32" height="80" rx="6"/>
+        <rect class="candle-stripe" x="14" y="70" width="32" height="10"/>
+      </svg>
+    </div>
+    <h2>หลับตา อธิษฐาน แล้วแตะเทียนเพื่อเป่าดับนะ</h2>
+  </div>
+
+  <div class="card" id="card">
+    <canvas id="bg"></canvas>
+    <div class="content">
+      <p class="ribbon">Happy Birthday</p>
+
+      <div class="hearts-row">
+        <span class="heart-sm">♡</span>
+        <span class="heart-big">💙</span>
+        <span class="heart-sm">♡</span>
+      </div>
+
+      <div class="date-seal">
+        <div class="seal-inner">🎂<br>วันไหน<br>หรอจ้ะ</div>
+      </div>
+
+      <div class="note-card">
+        <p class="cute-note">ไว้ใกล้ถึงวันเกิดเดี๋ยวมีเซอร์ไพรส์ให้นะ 🎁💙</p>
+      </div>
+
+      <a href="index.html" class="back-btn">← กลับหน้าหลัก</a>
+
+    </div>
+  </div>
+
+  <iframe id="bg-music"
+    style="opacity: 0; position: absolute; width: 1px; height: 1px; pointer-events: none; z-index: -10;"
+    title="Happy Birthday Song"
+    frameborder="0"
+    allow="autoplay; encrypted-media">
+  </iframe>
+
+  <script src="HBD.js"></script>
+</body>
+</html>

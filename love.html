@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ความลับ💘</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Sriracha&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="love.css">
+</head>
+<body>
+
+    <div id="progressBar"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">✦ GUS</a>
+        
+        <div class="nav-right">
+            <span class="mode-icon" id="modeIcon" onclick="toggleMode()" title="สลับโหมด">🌙</span>
+            <button class="mode-btn" id="modeBtn" onclick="toggleMode()" aria-label="สลับ light/dark"></button>
+
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    
+
+    <main class="love-main">
+        <div id="overlay">
+            <div class="glass-box" id="loveBox">
+                <h2>เป็นแฟนกันไหม 💙</h2>
+                <p>ตอบตรงนี้ได้เลยนะ<br>ถ้าตอบตกลง ค่อยว่ากัน อิอิ</p>
+                <div class="love-actions">
+                    <button id="loveYesBtn" class="back-button">เป็น 💙</button>
+                    <button id="loveNoBtn" class="back-button back-button--ghost">ขอคิดดูก่อน</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="f-copy">&copy; 2026 <span>GUS</span></div>
+        <div class="f-right">
+            <span class="f-clock" id="liveClock">00:00:00</span>
+            <div class="f-dot"></div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script src="love.js"></script>
+</body>
+</html>

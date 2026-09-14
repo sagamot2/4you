@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>For you 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css"/>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://4youba3e.netlify.app/">
+  <meta property="og:title" content="For you girl 💖">
+  <meta property="og:description" content="ทำทำไมไม่รู้ 💙">
+  <meta property="og:image" content="https://4youba3e.netlify.app/dolly.png">
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+
+<div id="progressBar"></div>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">B4B3</a>
+
+  <div class="nav-right">
+    <button class="icon-btn" id="musicBtn" onclick="toggleMusic()" aria-label="เปิด/ปิดเพลง" aria-pressed="false" title="เพลงพื้นหลัง">
+      <span id="musicIcon">♪</span>
+    </button>
+    <button class="icon-btn" id="modeIcon" onclick="toggleMode()" aria-label="สลับโหมด" title="สลับโหมด">🌙</button>
+  </div>
+</nav>
+
+<div id="ytPlayer" style="position:fixed;width:1px;height:1px;top:-9999px;left:-9999px;opacity:0;pointer-events:none;overflow:hidden;"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+
+      <p class="hero-eyebrow"> ถึงเธอ</p>
+
+      <h1 class="hero-title">โย่ววววว<em>แก้ม</em> <span class="heart">💙</span></h1>
+
+      <p class="hero-sub">
+        ทำมาจีบอะ<br>
+        ทำทำไมไม่รู้ ก็ทำไปแล้ว
+      </p>
+
+      <nav class="index-list" aria-label="เมนู">
+        <a href="love.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">Love</span>
+            <span class="index-row__desc">ความลับ</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="birth.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">About You</span>
+            <span class="index-row__desc">เกี่ยวกับเธอ</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="movie.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">Movie</span>
+            <span class="index-row__desc">ดูหนังด้วยกัน</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="music.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">Music</span>
+            <span class="index-row__desc">เพลงของเรา</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="HBD.html" id="hbdLink" class="index-row index-row--accent">
+          <span class="index-row__text">
+            <span class="index-row__title">Happy Birthday</span>
+            <span class="index-row__desc">วันเกิดของเธอ</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="time.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">Our Time</span>
+            <span class="index-row__desc">เวลาที่อยู่ด้วยกัน</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="contack.html" class="index-row">
+          <span class="index-row__text">
+            <span class="index-row__title">Contact</span>
+            <span class="index-row__desc">คุยกับกัส</span>
+          </span>
+          <span class="index-row__arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-copy">&copy; 2026 <span>GUS</span> 💙</div>
+    <div class="f-right">
+      <span class="f-clock" id="liveClock">00:00:00</span>
+      <div class="f-dot"></div>
+    </div>
+  </footer>
+</main>
+
+<script src="index.js"></script>
+
+<div id="discordPopup" class="dc-overlay">
+  <div class="dc-modal">
+    <div class="dc-header">
+      <div class="dc-title">ข้อความลับ</div>
+    </div>
+
+    <div class="dc-content">
+      <p class="dc-message">เป็นแฟนกันไหม 💙<br>ถ้าตอบตกลง แนบรูปชู 2 นิ้วมาด้วยนะ</p>
+
+      <div class="dc-form-box">
+        <div class="dc-input-group">
+            <label for="gf-image-upload" class="dc-btn-upload" title="แนบรูปถ่าย ชู 2 นิ้ว">
+                <span>แนบรูปมาเลย</span>
+            </label>
+            <input type="file" id="gf-image-upload" accept="image/*" style="display: none;">
+            <input type="text" id="gf-msg" class="dc-input" placeholder="พิมพ์บอกกัสได้ตรงนี้นะ...">
+        </div>
+
+        <div class="dc-preview-wrapper" id="gf-preview-wrapper" style="display: none;">
+            <img id="gf-image-preview" src="" alt="Preview">
+            <button id="gf-remove-image-btn" class="dc-remove-btn" title="ลบรูป">×</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-actions">
+      <button id="dcBtnYes" class="dc-btn primary">ตอบตกลง 💙</button>
+      <button id="dcBtnNo" class="dc-btn secondary">ขอคิดดูก่อน</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay for Gus 💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Mitr:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="donategus.css">
+</head>
+<body>
+    <div class="page-bg">
+        <div class="glow-bg"></div>
+    </div>
+
+    <main class="container">
+        <header class="profile-header">
+            <div class="avatar-glow">
+                <div class="avatar">
+                    <img src="https://scontent.fcnx4-2.fna.fbcdn.net/v/t1.15752-9/715537205_26984352497888518_4670379267963692559_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=oN6TCxvdoe8Q7kNvwFesy3W&_nc_oc=Adr6u1TPdPVYxOcMvem-qi0iR9lXoMV5lTYureZXeV9WGk5X6SVyrzEsbEZNqW988F2CwgddBZucvIxBdwmsA_5t&_nc_zt=23&_nc_ht=scontent.fcnx4-2.fna&_nc_ss=7b6a8&oh=03_Q7cD5wE8DV25V0R7S70bYWDc4hM11jpACGAzlogkpv_yP7X4VA&oe=6A6FD770">
+                </div>
+            </div>
+            
+            <h1 class="page-title">เลี้ยงกัสหน่อย 💙</h1>
+            <p class="bio">ยัยบ๊อง</p>
+            <a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+        </header>
+
+        <section class="donation-step glass-card">
+            <h2 class="step-title">1. เลือกเปย์ 👇</h2>
+            <div class="amount-grid">
+                <button class="amount-card active" data-amount="60" onclick="selectAmount(60, this)">
+                    <span class="emoji">🧋</span>
+                    <div class="info">
+                        <span class="title">ค่าชานมไข่มุก</span>
+                        <span class="price">60 💙</span>
+                    </div>
+                </button>
+                <button class="amount-card" data-amount="300" onclick="selectAmount(300, this)">
+                    <span class="emoji">🍿</span>
+                    <div class="info">
+                        <span class="title">ค่าตั๋วหนัง</span>
+                        <span class="price">300 💙</span>
+                    </div>
+                </button>
+                <button class="amount-card" data-amount="500" onclick="selectAmount(500, this)">
+                    <span class="emoji">🥩</span>
+                    <div class="info">
+                        <span class="title">ค่าหมูกระทะ</span>
+                        <span class="price">500 💙</span>
+                    </div>
+                </button>
+                <button class="amount-card" id="customBtn" onclick="toggleCustomInput(this)">
+                    <span class="emoji">♾️</span>
+                    <div class="info">
+                        <span class="title">ค่าบริการอื่นๆ</span>
+                        <span class="price">ระบุเอง</span>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="custom-input-wrapper" id="customInputWrapper">
+                <span class="currency-symbol">💙</span>
+                <input type="number" id="customAmount" placeholder="ระบุระดับความรัก (ตัวเลข)" min="1" oninput="updateCustomAmount(this.value)">
+            </div>
+
+            <div class="message-wrapper">
+                <label for="backerMessage" class="step-title" style="margin-top: 24px; display: block;">มีอะไรอยากบอกกัสมั้ย? (ใส่หรือไม่ใส่ก็ได้)</label>
+                <textarea id="backerMessage" rows="2" placeholder="พิมพ์ข้อความน่ารักๆ ตรงนี้..."></textarea>
+            </div>
+
+            <button class="btn-main glow-btn" id="supportBtn" onclick="openPaymentModal()">
+                โปรยทาน💙
+            </button>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-content glass-card" style="padding: 20px;">
+            <button class="modal-close" onclick="closePaymentModal(true)">✕</button>
+            
+            <div class="modal-header">
+                <h2>เลือกช่องทางการเปย์</h2>
+                <p>ยอดชำระ: <strong id="modalTotalAmount" style="color: var(--accent); font-size: 1.2rem;">60 💙</strong></p>
+            </div>
+
+            <div class="modal-tabs">
+                <button class="m-tab active" onclick="switchPaymentTab('love', this)">ความรัก ✨</button>
+                <button class="m-tab" onclick="switchPaymentTab('card', this)">ผูกบัตร 💳</button>
+                <button class="m-tab" onclick="switchPaymentTab('promptpay', this)">พร้อมเปย์ 📱</button>
+            </div>
+
+            <div class="payment-view active" id="view-love">
+                <div style="text-align: center; padding: 20px 0;">
+                    <div class="heart-pulse">💙</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
+                        ช่องทางนี้รับเฉพาะ <b>"ความรักจากลานนา"</b> เท่านั้น<br>ห้ามคนอื่นใช้เด็ดขาด!
+                    </p>
+                    <button class="btn-main glow-btn" onclick="payWithLove()">ชำระด้วยความรัก ยืนยัน!</button>
+                </div>
+            </div>
+
+            <div class="payment-view" id="view-card">
+                <div class="card-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                    <p style="font-size: 0.85rem; color: var(--accent); text-align: center;">* ข้อมูลบัตรจะถูกเก็บไว้ในใจกัสอย่างปลอดภัย *</p>
+                    <input type="text" placeholder="หมายเลขบัตร (รูดปื๊ดๆ)" maxlength="16" class="fake-input">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" placeholder="MM/YY" maxlength="5" class="fake-input" style="flex: 1;">
+                        <input type="password" placeholder="CVV" maxlength="3" class="fake-input" style="flex: 1;">
+                    </div>
+                    <input type="text" placeholder="ชื่อบนบัตร (ต้องเป็นชื่อลานนาเท่านั้น)" class="fake-input">
+                    <button class="btn-main glow-btn" onclick="linkCard()">ผูกบัตรเลย!</button>
+                </div>
+            </div>
+
+            <div class="payment-view" id="view-promptpay">
+                <div class="qr-box">
+                    <img id="promptpayQR" src="" alt="PromptPay QR">
+                </div>
+                <p class="qr-note">สแกนจ่ายได้เลย กัสรอรับตังค์อยู่นะ อิอิ</p>
+                <div class="modal-actions">
+                    <button class="btn-outline" onclick="copyData('0801138627', 'คัดลอกเบอร์พร้อมเปย์แล้ว 💸')">
+                        📋 คัดลอกเบอร์
+                    </button>
+                </div>
+            </div>
+            
+            <p class="thank-you-text" id="finalMessage">ขอบคุณที่เปย์กัสนะครับคนเก่ง 🥰</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">แจ้งเตือน</div>
+
+    <script src="donategus.js"></script>
+</body>
+</html>

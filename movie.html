@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies with gus 💙🍿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="movie.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">← กลับหน้าหลัก</a>
+    <button class="icon-btn" id="modeToggle" aria-label="สลับโหมด" title="สลับโหมด">🌙</button>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+
+        <p class="hero-eyebrow">ชวนดูหนังด้วยกัน</p>
+        <h1 class="hero-title">หนังที่อยากดู <span class="heart">🍿</span></h1>
+        <p class="hero-sub">อยากดูเรื่องไหนบอกได้เลย เลือกโรงกับเวลาที่สะดวกก่อนนะ</p>
+
+        <div class="ticket-card" id="selection-box">
+          <div class="step-row">
+            <span class="step-num">1</span>
+            <p class="step-text">เลือกโรงหนัง</p>
+          </div>
+
+          <div class="cinema-options">
+            <button class="cinema-card" data-cinema="major" data-url="https://www.majorcineplex.com/cinema/major-central-festival-Chiangmai/" type="button">
+              <span class="cinema-name">Major Cineplex</span>
+              <span class="cinema-branch">เซ็นทรัลเฟสติวัล</span>
+            </button>
+            <button class="cinema-card" data-cinema="sf" data-url="https://www.sfcinema.com/th/showtime" type="button">
+              <span class="cinema-name">SF Cinema</span>
+              <span class="cinema-branch">เมญ่า</span>
+            </button>
+          </div>
+
+          <div class="cinema-embed" id="cinemaEmbed" hidden>
+            <div class="cinema-embed__bar">
+              <span class="cinema-embed__name" id="cinemaEmbedName"></span>
+              <a class="cinema-embed__open" id="cinemaEmbedOpen" href="#" target="_blank" rel="noopener noreferrer">เปิดในแท็บใหม่ ↗</a>
+            </div>
+            <iframe class="cinema-embed__frame" id="cinemaEmbedFrame" src="" title="รอบหนัง" loading="lazy"></iframe>
+            <p class="cinema-embed__hint">ถ้าโรงหนังไม่ยอมให้แสดงตรงนี้ ให้กด "เปิดในแท็บใหม่" ด้านบนแทนนะ</p>
+          </div>
+
+          <div class="step-row" style="margin-top: 26px;">
+            <span class="step-num">2</span>
+            <p class="step-text">วันและเวลาที่สะดวก</p>
+          </div>
+          <div class="input-group mobile-stack">
+            <input type="text" id="date-select" placeholder="เลือกวันที่...">
+            <input type="text" id="time-select" placeholder="เลือกเวลา...">
+          </div>
+
+          <button id="show-movie-btn" class="btn-primary" type="button">ยืนยันแผนดูหนัง</button>
+          <p class="confirm-note" id="confirmNote"></p>
+        </div>
+
+        <div class="ticket-card">
+          <div class="step-row">
+            <span class="step-num">3</span>
+            <p class="step-text">ได้เรื่องแล้วส่งมาบอกกัสได้เลย</p>
+          </div>
+
+          <div class="input-group mobile-stack">
+            <label for="image-upload" class="btn-upload" title="แนบรูปที่แคปมา">แนบรูปตั๋ว/หนัง</label>
+            <input type="file" id="image-upload" accept="image/*" hidden>
+            <input type="text" id="discord-msg" placeholder="พิมพ์บอกกัสตรงนี้ได้เลย...">
+          </div>
+
+          <div class="preview-wrapper" id="preview-wrapper">
+            <img id="image-preview" src="" alt="Preview">
+            <button id="remove-image-btn" class="remove-btn" title="ลบรูป" type="button">×</button>
+          </div>
+
+          <button id="send-discord-btn" class="btn-primary" type="button">ส่งให้กัส 💙</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="movie.js"></script>
+</body>
+</html>
